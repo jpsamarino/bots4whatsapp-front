@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/Button";
+import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
 import Image from "next/image";
 import {
   Card,
@@ -55,7 +56,11 @@ export default function InitialIdea() {
             <CardContent className="space-y-2">
               <div className="space-y-1">
                 <Label htmlFor="name">Token</Label>
-                <Input id="name" placeholder="Token in .ENV" type="password" />
+                <PasswordInput
+                  id="name"
+                  placeholder="Token in .ENV"
+                  type="password"
+                />
               </div>
               <div className="pt-2 flex items-center">
                 <Checkbox id="terms" className="border-primary" />
@@ -90,7 +95,11 @@ export default function InitialIdea() {
               </div>
               <div className="space-y-1">
                 <Label htmlFor="name">Token</Label>
-                <Input id="name" placeholder="Token in .ENV" type="password" />
+                <PasswordInput
+                  id="name"
+                  placeholder="Token in .ENV"
+                  type="password"
+                />
               </div>
               <div className="pt-2 flex items-center">
                 <Checkbox id="terms" className="border-primary" />
