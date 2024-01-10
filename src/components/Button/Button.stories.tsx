@@ -3,7 +3,7 @@ import { Button } from "./Button";
 import { buttonStyleVariants, getParamsOfButtonVariant } from "./Button.styles";
 
 const meta: Meta<typeof Button> = {
-  title: "Button",
+  title: "components/Button",
   component: Button,
   tags: ["autodocs"],
   args: {
