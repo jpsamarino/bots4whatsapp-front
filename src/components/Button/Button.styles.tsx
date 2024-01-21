@@ -1,7 +1,7 @@
 import {
   defineStylesWithVariants,
   VariantProposType,
-} from "@/utils/styles-variants-functions";
+} from "@/utils/stylesVariantsFunctions";
 
 const {
   styleVariants: buttonStyleVariants,

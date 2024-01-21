@@ -1,5 +1,5 @@
 import { describe, expect, test } from "@jest/globals";
-import { defineStylesWithVariants, cn } from "./styles-variants-functions";
+import { defineStylesWithVariants, cn } from "./stylesVariantsFunctions";
 
 describe("test model to process styles (defineStylesWithVariants)", () => {
   test("should extract styleVariants ", () => {

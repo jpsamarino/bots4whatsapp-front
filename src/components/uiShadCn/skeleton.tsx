@@ -1,4 +1,4 @@
-import { cn } from "@/utils/styles-variants-functions";
+import { cn } from "@/utils/stylesVariantsFunctions";
 
 function Skeleton({
   className,

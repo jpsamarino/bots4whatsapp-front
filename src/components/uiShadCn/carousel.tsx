@@ -6,7 +6,7 @@ import useEmblaCarousel, {
   type EmblaPluginType as CarouselPlugin,
 } from "embla-carousel-react";
 
-import { cn } from "@/utils/styles-variants-functions";
+import { cn } from "@/utils/stylesVariantsFunctions";
 import { Button } from "@/components/uiShadCn/button";
 
 type CarouselProps = {

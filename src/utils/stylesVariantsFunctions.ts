@@ -1,5 +1,5 @@
 import { cva } from "class-variance-authority";
-import { ClassValue, Config } from "./styles-variants-functions.interfaces";
+import { ClassValue, Config } from "./stylesVariantsFunctions.interfaces";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
