@@ -10,6 +10,8 @@ const meta: Meta<typeof Button> = {
     variant: "default",
     children: "Button",
     size: "default",
+    disabled: false,
+    isLoading: false,
   },
   argTypes: {
     variant: {
@@ -19,6 +21,12 @@ const meta: Meta<typeof Button> = {
     size: {
       options: getParamsOfButtonVariant("size"),
       control: { type: "select" },
+    },
+    disabled: {
+      control: { type: "boolean" },
+    },
+    isLoading: {
+      control: { type: "boolean" },
     },
   },
 };
