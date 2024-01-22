@@ -11,11 +11,24 @@ import {
   CardTitle,
 } from "@/components/uiShadCn/card";
 import * as React from "react";
+import { signUp } from "@/api/auth/signUp";
+import { useRouter } from "next/navigation";
 
 export default function CardLoginLocalEnv({
   className,
   ...props
 }: React.ComponentProps<typeof Card>) {
+  const [token, setToken] = React.useState("");
+  const [remainLogged, setRemainLogged] = React.useState(false);
+  const router = useRouter();
+  const handleApi = async () => {
+    const data = await signUp(token, remainLogged);
+    if (data.statusCode === 200) {
+      router.push("/");
+    } else {
+      alert(JSON.stringify(data.body));
+    }
+  };
   return (
     <Card className={className} {...props}>
       <CardHeader>
@@ -32,10 +45,17 @@ export default function CardLoginLocalEnv({
             id="name"
             placeholder="Token in .ENV"
             type="password"
+            value={token}
+            onChange={(e) => setToken(e.target.value)}
           />
         </div>
         <div className="pt-2 flex items-center">
-          <Checkbox id="terms" className="border-primary" />
+          <Checkbox
+            id="terms"
+            className="border-primary"
+            checked={remainLogged}
+            onClick={() => setRemainLogged((prev) => !prev)}
+          />
           <Label
             htmlFor="terms"
             className="text-sm pl-2 peer-disabled:cursor-not-allowed mt-0"
@@ -45,7 +65,7 @@ export default function CardLoginLocalEnv({
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full" size="sm">
+        <Button className="w-full" size="sm" onClick={handleApi}>
           Sign in
         </Button>
       </CardFooter>
