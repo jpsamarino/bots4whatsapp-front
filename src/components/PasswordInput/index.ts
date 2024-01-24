@@ -1,1 +1,1 @@
-export { Button, getClassNameButton } from "./PasswordInput";
+export { PasswordInput, getClassNamePasswordInput } from "./PasswordInput";
