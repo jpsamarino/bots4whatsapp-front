@@ -30,11 +30,8 @@ export const fetchHttpClient: HttpClient = async (data: HttpRequest) => {
         ? await response.json()
         : undefined;
     const bodyText = bodyObj ? undefined : await response.text();
-    console.log("bodyObj", bodyObj);
-    console.log("bodyText", bodyText);
     if (!response.ok) {
       // Handle non-2xx HTTP status codes
-      console.log("response.status", response.status);
       return {
         statusCode: response.status,
         body: bodyObj || { erro: bodyText } || { erro: "unidentified" },
