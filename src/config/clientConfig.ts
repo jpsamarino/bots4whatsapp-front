@@ -1,9 +1,10 @@
+"use client;";
 import { env } from "@/config/env";
 
 // use a cached instead consult local storage every time
 let currentServerUrl = localStorage.getItem("serverUrl") || env.LOCALSERVER;
 
-export const serverConfig = {
+export const clientConfig = {
   getServerUrl: () => {
     return currentServerUrl;
   },

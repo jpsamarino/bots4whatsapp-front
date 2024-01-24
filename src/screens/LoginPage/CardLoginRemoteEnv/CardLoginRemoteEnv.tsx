@@ -15,7 +15,7 @@ import {
 import { useToast } from "@/components/uiShadCn/use-toast";
 import { ValidationInput } from "@/components/ValidationInput/ValidationInput";
 import { validateServerUrl, validateToken } from "../dataValidations";
-import { serverConfig } from "@/config/serverConfig";
+import { clientConfig } from "@/config/clientConfig";
 import { signUp } from "@/api/auth/signUp";
 
 export default function CardLoginRemoteEnv({
@@ -46,7 +46,7 @@ export default function CardLoginRemoteEnv({
     const data = await signUp(token, remainLogged, serverUrl);
     if (data.statusCode === 200) {
       //save url in localstorage
-      serverConfig.setServerUrl(serverUrl);
+      clientConfig.setServerUrl(serverUrl);
       router.push("/");
     } else {
       toast({
