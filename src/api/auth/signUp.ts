@@ -4,10 +4,11 @@ import { HttpResponse } from "@/api/protocols/httpClientInterfaces";
 
 export const signUp = async (
   passwordToken: string,
-  remainLogged: boolean
+  remainLogged: boolean,
+  urlServer: string = env.LOCALSERVER
 ): Promise<HttpResponse> => {
   const response = await fetchHttpClient({
-    url: `${env.LOCALSERVER}/api/signup`,
+    url: `${urlServer}/api/signup`,
     method: "post",
     body: {
       passwordToken,
