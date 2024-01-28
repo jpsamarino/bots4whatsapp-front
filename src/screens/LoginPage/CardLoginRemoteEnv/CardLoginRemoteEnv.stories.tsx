@@ -6,6 +6,11 @@ const meta: Meta<typeof CardLoginRemoteEnv> = {
   component: CardLoginRemoteEnv,
   tags: ["autodocs"],
   args: {},
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   argTypes: {},
 };
 
