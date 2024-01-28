@@ -15,7 +15,6 @@ export const clientConfig = {
     return currentServerUrl;
   },
   setServerUrl: (serverUrl: string) => {
-    debugger;
     localStorage.setItem("serverUrl", serverUrl);
     currentServerUrl = serverUrl;
   },
