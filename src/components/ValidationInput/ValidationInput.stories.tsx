@@ -32,9 +32,6 @@ export const BtInside: Story = {
       </div>
     );
   },
-  args: {
-    variant: "btInside",
-  },
 };
 
 export const BtOutside: Story = {
@@ -44,8 +41,5 @@ export const BtOutside: Story = {
         <ValidationInput />
       </div>
     );
-  },
-  args: {
-    variant: "btOutside",
   },
 };
