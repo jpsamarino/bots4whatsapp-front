@@ -1,13 +1,18 @@
 import { SVGAttributes } from "react";
-import { DashBoardIcon } from "../icons";
 
+export enum BadgeType {
+  info = "info",
+  alert = "alert",
+  error = "error",
+}
 export type MenuOptionItem = {
   name: string;
   path?: string;
-  icon: SVGAttributes<SVGElement>;
+  icon: (props: SVGAttributes<SVGElement>) => JSX.Element;
   hasBadge: boolean;
-  badgeType?: "info" | "alert" | "error";
+  badgeType?: BadgeType;
   badgeValue?: string | number | null;
+  selected?: boolean;
   subOptions?: MenuOptionItem[];
   permissions?: string[];
 };

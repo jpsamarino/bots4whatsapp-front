@@ -60,6 +60,7 @@ export const defaultMenuOptions = [
         path: "/whatsapp/connections",
         icon: DashBoardIcon,
         hasBadge: false,
+        selected: true,
         permissions: ["root"],
       },
       {
@@ -67,7 +68,7 @@ export const defaultMenuOptions = [
         icon: DashBoardIcon,
         hasBadge: true,
         badgeType: "info",
-        badgeValue: null,
+        badgeValue: "+99",
         subOptions: [
           {
             name: "Home",
@@ -89,13 +90,27 @@ export const defaultMenuOptions = [
             hasBadge: false,
           },
           {
-            nome: "Shortcuts",
+            name: "Shortcuts",
             path: "/whatsapp/messages/shortcuts",
             icon: DashBoardIcon,
             hasBadge: false,
+            subOptions: [
+              {
+                name: "Scheduled",
+                path: "/whatsapp/messages/scheduled",
+                icon: DashBoardIcon,
+                hasBadge: false,
+              },
+              {
+                name: "Triggers",
+                path: "/whatsapp/messages/triggers",
+                icon: DashBoardIcon,
+                hasBadge: false,
+              },
+            ],
           },
           {
-            nome: "Configuration",
+            name: "Configuration",
             path: "/whatsapp/messages/configuration",
             icon: DashBoardIcon,
             hasBadge: false,
@@ -103,13 +118,13 @@ export const defaultMenuOptions = [
         ],
       },
       {
-        nome: "Contacts",
+        name: "Contacts",
         path: "/whatsapp/contacts",
         icon: DashBoardIcon,
         hasBadge: false,
       },
       {
-        nome: "Chats",
+        name: "Chats",
         path: "/whatsapp/chats",
         icon: DashBoardIcon,
         hasBadge: false,
