@@ -3,6 +3,7 @@ import {
   ButtonHTMLAttributes,
   ElementType,
   SVGAttributes,
+  useEffect,
   useState,
 } from "react";
 import {
@@ -40,9 +41,29 @@ function IconWithBandage({
     </div>
   );
 }
-
+function deepSearchSelected(itemMenu: MenuOptionItem) {
+  if (itemMenu.subOptions?.length) {
+    for (const currentItem of itemMenu.subOptions) {
+      if (currentItem.selected) {
+        return true;
+      } else if (currentItem.subOptions?.length) {
+        if (deepSearchSelected(currentItem)) {
+          return true;
+        }
+      }
+    }
+  }
+  return itemMenu.selected || false;
+}
 function ItemMenu({ itemMenu }: { itemMenu: MenuOptionItem }) {
   const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    if (!isOpen) {
+      const isDeepSelected = deepSearchSelected(itemMenu);
+      console.log("isDeepSelected", itemMenu.name, isDeepSelected);
+      setIsOpen(isDeepSelected);
+    }
+  }, []);
   return (
     <>
       {itemMenu.subOptions?.length ? (
@@ -63,7 +84,11 @@ function ItemMenu({ itemMenu }: { itemMenu: MenuOptionItem }) {
                 {itemMenu.name}
               </div>
               <div className="pr-1">
-                <CaretDownIcon />
+                <CaretDownIcon
+                  className={`transition-transform ${
+                    isOpen ? "duration-500 transform rotate-180" : ""
+                  }`}
+                />
               </div>
             </div>
           </Collapsible.Trigger>
@@ -81,7 +106,12 @@ function ItemMenu({ itemMenu }: { itemMenu: MenuOptionItem }) {
           </Collapsible.Content>
         </Collapsible.Root>
       ) : (
-        <a href={itemMenu.path} className="text-sm flex items-center">
+        <a
+          href={itemMenu.path}
+          className={`text-sm flex items-center ${
+            itemMenu.selected && "font-semibold"
+          }`}
+        >
           <IconWithBandage
             Icon={itemMenu.icon}
             hasBadge={itemMenu.hasBadge}
@@ -98,7 +128,7 @@ function ItemMenu({ itemMenu }: { itemMenu: MenuOptionItem }) {
 export function SidebarMenu({ menuOptions }: { menuOptions: MenuOptions }) {
   return (
     <div className="h-screen">
-      <div id="aside-menu" className="max-w-[250px] border-r p-1">
+      <div id="aside-menu" className="max-w-[250px] border-r p-1 h-full">
         <div id="menu" className="flex items-center justify-start p-2 mb-1 ">
           <Image
             src="/logo.svg"
