@@ -4,7 +4,10 @@ export function isAllowAcess(
   requirementsPermissions?: string[],
   userPermissions?: string[] | null
 ) {
-  if (requirementsPermissions == undefined) {
+  if (
+    requirementsPermissions == undefined ||
+    requirementsPermissions.length == 0
+  ) {
     return true; // there is no requirements
   }
   if (userPermissions == null || userPermissions == undefined) {

@@ -38,4 +38,10 @@ describe("test is function isAllowAcess", () => {
     const isAllow = isAllowAcess(requirementPermission, userPermissions);
     expect(isAllow).toBe(true);
   });
+  test("when userPermissions is undefined and requirementPermission is [] return true", () => {
+    const userPermissions = undefined;
+    const requirementPermission: string[] = [];
+    const isAllow = isAllowAcess(requirementPermission, userPermissions);
+    expect(isAllow).toBe(true);
+  });
 });
