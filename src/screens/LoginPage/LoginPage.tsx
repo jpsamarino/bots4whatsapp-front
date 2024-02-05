@@ -26,10 +26,10 @@ export default function LoginPage() {
   return (
     <div className="w-screen h-screen flex flex-row flex-wrap justify-center content-center">
       <div className="w-[400px] flex flex-col items-center py-5">
-        <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-3xl text-[#2B3F3E]">
-          Bots<span className="text-[#738383]">4</span>Whatsapp
+        <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-3xl text-[--logo-foreground">
+          Bots<span className="text-[--logo]">4</span>Whatsapp
         </h1>
-        <h2 className="text-[#738383] text-xl font-semibold lg:text-2xl">
+        <h2 className="text-[--logo] text-xl font-semibold lg:text-2xl">
           Admin Panel
         </h2>
         <div className="w-[240px]"></div>
