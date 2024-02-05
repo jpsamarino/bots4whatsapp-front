@@ -3,6 +3,7 @@ import { type MenuOptionItem } from "./menuOptionInterfaces";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import { IconWithBadage } from "../IconWithBadge";
+import { isAllowAcess } from "@/utils/permissionsFunctions";
 
 function deepSearchSelected(itemMenu: MenuOptionItem) {
   if (itemMenu.subOptions?.length) {
@@ -19,7 +20,13 @@ function deepSearchSelected(itemMenu: MenuOptionItem) {
   return itemMenu.selected || false;
 }
 
-export function SidebarMenuItem({ itemMenu }: { itemMenu: MenuOptionItem }) {
+export function SidebarMenuItem({
+  itemMenu,
+  userPermissions,
+}: {
+  itemMenu: MenuOptionItem;
+  userPermissions: string[];
+}) {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     const isDeepSelected = deepSearchSelected(itemMenu);
@@ -54,26 +61,31 @@ export function SidebarMenuItem({ itemMenu }: { itemMenu: MenuOptionItem }) {
             </div>
           </Collapsible.Trigger>
           <Collapsible.Content>
-            {itemMenu.subOptions.map((currentItem) => {
-              return (
-                <div
-                  className="flex items-center justify-start pl-2"
-                  key={currentItem.name}
-                >
-                  <SidebarMenuItem
+            {itemMenu.subOptions
+              .filter((currentItem) =>
+                isAllowAcess(currentItem.permissions, userPermissions)
+              )
+              .map((currentItem) => {
+                return (
+                  <div
+                    className="flex items-center justify-start pl-2"
                     key={currentItem.name}
-                    itemMenu={currentItem}
-                  />
-                </div>
-              );
-            })}
+                  >
+                    <SidebarMenuItem
+                      key={currentItem.name}
+                      itemMenu={currentItem}
+                      userPermissions={userPermissions}
+                    />
+                  </div>
+                );
+              })}
           </Collapsible.Content>
         </Collapsible.Root>
       ) : (
         <a
           href={itemMenu.path}
-          className={`text-sm flex items-center p-2 pl-3 rounded-sm hover:bg-slate-100 w-full ${
-            itemMenu.selected && " bg-slate-100"
+          className={`text-sm flex items-center p-2 pl-3 rounded-sm hover:bg-secondary w-full ${
+            itemMenu.selected && " bg-secondary"
           }`}
         >
           <IconWithBadage
