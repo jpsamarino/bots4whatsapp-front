@@ -106,6 +106,7 @@ export const defaultMenuOptions = [
                 path: "/whatsapp/messages/triggers",
                 icon: DashBoardIcon,
                 hasBadge: false,
+                selected: true,
               },
             ],
           },

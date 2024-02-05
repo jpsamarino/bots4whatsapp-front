@@ -58,12 +58,9 @@ function deepSearchSelected(itemMenu: MenuOptionItem) {
 function ItemMenu({ itemMenu }: { itemMenu: MenuOptionItem }) {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
-    if (!isOpen) {
-      const isDeepSelected = deepSearchSelected(itemMenu);
-      console.log("isDeepSelected", itemMenu.name, isDeepSelected);
-      setIsOpen(isDeepSelected);
-    }
-  }, []);
+    const isDeepSelected = deepSearchSelected(itemMenu);
+    setIsOpen(isDeepSelected);
+  }, [itemMenu]);
   return (
     <>
       {itemMenu.subOptions?.length ? (
